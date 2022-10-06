@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Footballplayer;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function show()
     {
-
-        $headTitle = 'Home';
-
-        $footballplayers = Footballplayer::all();
-
-        return view('welcome',
-        compact('headTitle',
-        'footballplayers'));
+        return view('home');
     }
 }

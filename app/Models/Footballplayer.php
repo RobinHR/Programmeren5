@@ -9,5 +9,12 @@ class Footballplayer extends Model
 {
     use HasFactory;
 
-    protected $table = 'footballplayers';
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'position',
+        'back_number',
+        'extra_information',
+        'country',
+    ];
 }

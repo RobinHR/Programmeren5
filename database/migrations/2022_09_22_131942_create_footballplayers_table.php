@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('footballplayer', function (Blueprint $table) {
+        Schema::create('footballplayers', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('position');
             $table->integer('back_number');
-            $table->text('extra_information');
+            $table->text('extra_information')->nullable();
             $table->text('image')->nullable();
-            $table->string('country');
+            $table->string('country')->nullable();
             $table->timestamps();
         });
     }
