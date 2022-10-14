@@ -21,21 +21,31 @@
                 <div class="form-group">
                     <label for="">Voornaam</label>
                     <input type="text" class="form-control" name="first_name" placeholder="Voornaam">
+                    <span style="color:red">@error('first_name'){{$message}}@enderror</span>
                 </div>
 
                 <div class="form-group">
                     <label for="">Achternaam</label>
                     <input type="text" class="form-control" name="last_name" placeholder="Achternaam">
+                    <span style="color:red">@error('last_name'){{$message}}@enderror</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="">Positie</label>
-                    <input type="text" class="form-control" name="position" placeholder="Positie">
-                </div>
+                @foreach($categories as $category)
+
+                    <div class="form-check">
+                        <input name="categories" class="form-check-input" type="checkbox" value="{{$category->id}}" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            {{$category->position}}
+                        </label>
+                    </div>
+
+                @endforeach
+                <span style="color:red">@error('categories'){{$message}}@enderror</span>
 
                 <div class="form-group">
                     <label for="">Rugnummer</label>
                     <input type="number" class="form-control" name="back_number" placeholder="Rugnummer">
+                    <span style="color:red">@error('back_number'){{$message}}@enderror</span>
                 </div>
 
                 <div class="form-group">
@@ -46,12 +56,14 @@
                 <div class="form-group">
                     <label for="">Land</label>
                     <input type="text" class="form-control" name="country" placeholder="Land">
+                    <span style="color:red">@error('country'){{$message}}@enderror</span>
                 </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">SAVE</button>
                 </div>
             </form>
+            <a href="{{route('welcome')}}" class="btn btn-primary">Terug naar de Welkom Pagina</a>
         </div>
     </div>
 </div>
