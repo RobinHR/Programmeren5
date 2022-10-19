@@ -28,6 +28,15 @@
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
+                            <form action="{{route('footballplayer.active', $myplayer)}}" method="post">
+                                @csrf
+                                @if($myplayer->active)
+                                    <button class="btn btn-primary" type="submit">Actief</button>
+                                @else
+                                    <button class="btn btn-outline-dark" type="submit">Niet actief</button>
+                                @endif
+
+                            </form>
                         </div>
                     </td>
             @endforeach

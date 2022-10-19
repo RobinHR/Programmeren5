@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->integer('back_number');
             $table->text('extra_information')->nullable();
+            $table->boolean('active')->default(0);
             $table->text('image')->nullable();
             $table->string('country')->nullable();
             $table->timestamps();

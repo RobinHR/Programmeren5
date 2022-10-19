@@ -10,7 +10,9 @@ Route::get('/', [HomeController::class, 'show']);
 
 Route::get('/about', [AboutController::class, 'show']);
 
-Route::resource('search', \App\Http\Controllers\SearchController::class);
+Route::get('search/filter', [App\Http\Controllers\SearchController::class, 'filter'])->name('search.filter');
+
+Route::resource('search', \App\Http\Controllers\SearchController::class)->except('show');
 
 Auth::routes();
 
@@ -22,5 +24,6 @@ Route::get('/index', [FootballplayerController::class, 'index']);
 Route::post('add', [FootballplayerController::class, 'add']);
 
 Route::resource('footballplayer',FootballplayerController::class);
+Route::post('footballplayer/{footballplayer}/active', [FootballplayerController::class, 'active'])->name('footballplayer.active');
 
 Route::resource('user', \App\Http\Controllers\UserController::class);

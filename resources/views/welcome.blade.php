@@ -1,6 +1,7 @@
 @extends('layouts/app')
 @section('content')
     <h1>Nederlands Elftal 2022</h1>
+    <span style="color: red">{{$errorMessage}}</span>
     <p>Hier kunt u de selectie zien van het Nederlands Elftal:</p>
     <a href="{{route('footballplayer.create')}}" class="btn btn-primary">Voeg nieuwe Speler toe</a>
 
@@ -13,6 +14,10 @@
 
         </form>
     </div>
+
+        @foreach($categories as $category)
+            <a href="{{route('search.filter', ['category' => $category->id])}}" type="button" class="btn btn-outline-dark">{{$category->position}}</a>
+        @endforeach
 
 
     <table class="table">
