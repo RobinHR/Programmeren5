@@ -36,23 +36,22 @@
                 <td>{{$footballplayer->extra_information}}</td>
                 <td>{{$footballplayer->country}}</td>
 
+
                 @if(Auth::user()->admin)
                     <div class="btn-group">
                         <td>
                             <div class="btn-group">
                                 <a class="btn btn-primary"
                                    href="{{ route('footballplayer.edit',$footballplayer->id) }}">Edit</a>
-                                <a class="btn btn-primary"
-                                   href="{{ route('footballplayer.show',$footballplayer->id) }}">Details</a>
                                 <form action="{{ route('footballplayer.destroy', $footballplayer->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Delete</button>
-                                </form>
+                                    @endif
+                                    <td><a class="btn btn-primary"
+                                           href="{{ route('footballplayer.show',$footballplayer->id) }}">Details</a></td>
                             </div>
                         </td>
-                @endif
-
                 @endforeach
             </tr>
     </table>
