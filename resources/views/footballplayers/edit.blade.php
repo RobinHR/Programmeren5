@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form action="{{ route('footballplayer.update', $footballplayer->id) }}" method="POST">
+    <form action="{{ route('footballplayers.update', $footballplayer->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">

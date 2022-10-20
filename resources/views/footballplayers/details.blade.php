@@ -16,5 +16,5 @@
                 <td>{{$footballplayer->country}}</td>
             </tr>
     </table>
-    <a href="{{route('welcome')}}" class="btn btn-primary">Terug naar Welkom</a>
+    <a href="{{route('footballplayers.index')}}" class="btn btn-primary">Terug naar de Indexpagina</a>
 @endsection

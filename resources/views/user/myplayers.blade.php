@@ -20,15 +20,15 @@
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-primary"
-                               href="{{ route('footballplayer.edit',$myplayer->id) }}">Edit</a>
+                               href="{{ route('footballplayers.edit',$myplayer->id) }}">Edit</a>
                             <a class="btn btn-primary"
-                               href="{{ route('footballplayer.show',$myplayer->id) }}">Details</a>
-                            <form action="{{ route('footballplayer.destroy', $myplayer->id) }}" method="post">
+                               href="{{ route('footballplayers.show',$myplayer->id) }}">Details</a>
+                            <form action="{{ route('footballplayers.destroy', $myplayer->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
-                            <form action="{{route('footballplayer.active', $myplayer)}}" method="post">
+                            <form action="{{route('footballplayers.active', $myplayer)}}" method="post">
                                 @csrf
                                 @if($myplayer->active)
                                     <button class="btn btn-primary" type="submit">Actief</button>
@@ -42,6 +42,6 @@
             @endforeach
             </tr>
         </table>
-    <a href="{{route('welcome')}}" class="btn btn-primary">Terug naar Welkom</a>
+    <a href="{{route('footballplayers.index')}}" class="btn btn-primary">Terug naar Welkom</a>
 
 @endsection

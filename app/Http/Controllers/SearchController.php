@@ -22,7 +22,7 @@ class SearchController extends Controller
             ->get();
 
         $categories = Category::all();
-        return view('welcome', compact('footballplayers', 'categories', 'errorMessage'));
+        return view('footballplayers.index', compact('footballplayers', 'categories', 'errorMessage'));
 
 
     }
@@ -36,7 +36,7 @@ class SearchController extends Controller
         $errorMessage = '';
         $categories = Category::all();
 
-        return view('welcome', compact('footballplayers', 'categories', 'errorMessage'));
+        return view('footballplayers.index', compact('footballplayers', 'categories', 'errorMessage'));
     }
 
 }

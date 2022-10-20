@@ -61,11 +61,11 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{route('user.show', Auth::user()->getOriginal()['id']) }}">
+                                    <a class="dropdown-item" href="{{route('users.show', Auth::user()->getOriginal()['id']) }}">
                                         Account Aanpassen
                                     </a>
 
-                                    <a class="dropdown-item" href="{{route('user.index')}}">
+                                    <a class="dropdown-item" href="{{route('users.index')}}">
                                         Mijn Spelers
                                     </a>
 

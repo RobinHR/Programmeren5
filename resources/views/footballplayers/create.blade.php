@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CRUD</title>
+    <title>Voeg een nieuwe speler toe</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h4>Voeg nieuwe Speler toe</h4>
-            <form action="{{route('footballplayer.store')}}" method="post">
+            <form action="{{route('footballplayers.store')}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="">Voornaam</label>
@@ -63,7 +63,7 @@
                     <button type="submit" class="btn btn-primary btn-block">SAVE</button>
                 </div>
             </form>
-            <a href="{{route('welcome')}}" class="btn btn-primary">Terug naar de Welkom Pagina</a>
+            <a href="{{route('footballplayers.index')}}" class="btn btn-primary">Terug naar de Indexpagina</a>
         </div>
     </div>
 </div>

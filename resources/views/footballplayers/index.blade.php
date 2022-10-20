@@ -1,9 +1,9 @@
-@extends('layouts/app')
+@extends('layouts.app')
 @section('content')
     <h1>Nederlands Elftal 2022</h1>
-    <span style="color: red">{{$errorMessage}}</span>
+    @if(isset($errorMessage))    <span style="color: red">{{$errorMessage}}</span> @endif
     <p>Hier kunt u de selectie zien van het Nederlands Elftal:</p>
-    <a href="{{route('footballplayer.create')}}" class="btn btn-primary">Voeg nieuwe Speler toe</a>
+    <a href="{{route('footballplayers.create')}}" class="btn btn-primary">Voeg nieuwe Speler toe</a>
 
     <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
         @csrf
@@ -42,20 +42,19 @@
                         <td>
                             <div class="btn-group">
                                 <a class="btn btn-primary"
-                                   href="{{ route('footballplayer.edit',$footballplayer->id) }}">Edit</a>
-                                <form action="{{ route('footballplayer.destroy', $footballplayer->id) }}" method="post">
+                                   href="{{ route('footballplayers.edit',$footballplayer->id) }}">Edit</a>
+                                <form action="{{ route('footballplayers.destroy', $footballplayer->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                     @endif
+                                </form></div>
                                     <td><a class="btn btn-primary"
-                                           href="{{ route('footballplayer.show',$footballplayer->id) }}">Details</a></td>
+                                           href="{{ route('footballplayers.show',$footballplayer->id) }}">Details</a></td>
                             </div>
                         </td>
                 @endforeach
             </tr>
     </table>
-    <p></p>
-    <a href="/about">"naar about"</a>
 @endsection
 

@@ -16,9 +16,17 @@ class FootballplayerController extends Controller
     {
         $footballplayers = Footballplayer::where('active', '=', '1')->get();
         $categories = Category::all();
+        if (Auth::user()->detail_click_counter >=3){
 
-        return view('index',
-            compact('footballplayers', 'categories'));
+            $errorMessage = '';
+            return view('footballplayers.index', compact('categories', 'errorMessage', 'footballplayers'));
+        } else {
+            $errorMessage = 'Je hebt nog niet vaak genoeg op de detailspagina geklikt om een nieuwe speler toe te voegen';
+
+
+            return view('footballplayers.index',
+                compact('footballplayers', 'categories', 'errorMessage'));
+        }
     }
 
     function store(Request $request)
@@ -41,7 +49,7 @@ class FootballplayerController extends Controller
         Footballplayer::create($data);
 
 
-        return redirect(route('welcome'));
+        return redirect(route('footballplayers.index'));
 
     }
 
@@ -53,9 +61,9 @@ class FootballplayerController extends Controller
         if (Auth::user()->detail_click_counter >=3){
 
             $errorMessage = '';
-            return view('index', compact('categories', 'errorMessage', 'footballplayers'));
+            return view('footballplayers.create', compact('categories', 'errorMessage', 'footballplayers'));
         } else {
-            return redirect(route('welcome', compact('footballplayers', 'categories', 'errorMessage')));
+            return redirect(route('footballplayers.index', compact('footballplayers', 'categories', 'errorMessage')));
         }
     }
 
@@ -63,7 +71,7 @@ class FootballplayerController extends Controller
     {
         $footballplayer = Footballplayer::find($id);
         $categories = Category::all();
-        return view('footballplayer.edit', compact('id', 'footballplayer', 'categories'));
+        return view('footballplayers.edit', compact('id', 'footballplayer', 'categories'));
     }
 
     function update(Request $request, Footballplayer $footballplayer)
@@ -83,21 +91,21 @@ class FootballplayerController extends Controller
 
         $footballplayer->update($request->all());
 
-        return redirect(route('welcome'));
+        return redirect(route('footballplayers.index'));
     }
 
     public function destroy($id)
     {
         $footballplayer = Footballplayer::find($id);
         $footballplayer->delete();
-        return redirect(route('welcome'));
+        return redirect(route('footballplayers.index'));
     }
 
     public function show($id)
     {
         $this->counter();
         $footballplayer = Footballplayer::find($id);
-        return view('footballplayer.show', compact('id', 'footballplayer'));
+        return view('footballplayers.details', compact('id', 'footballplayer'));
     }
 
     public function counter(){
@@ -109,8 +117,9 @@ class FootballplayerController extends Controller
         $user->save();
     }
 
-    public function active(Footballplayer $footballplayer)
+    public function active($footballplayerId)
     {
+        $footballplayer = Footballplayer::find($footballplayerId);
         $currentState = $footballplayer->active;
         if ($currentState)
         {
@@ -123,7 +132,7 @@ class FootballplayerController extends Controller
         $footballplayer->active = $state;
         $footballplayer->save();
 
-        return redirect(route('user.index'));
+        return redirect(route('users.index'));
     }
 
 }

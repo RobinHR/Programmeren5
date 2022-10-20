@@ -16,14 +16,15 @@ Route::resource('search', \App\Http\Controllers\SearchController::class)->except
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'show'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'show'])->name('home');
 
-Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcome');
+//Route::get('/index', [App\Http\Controllers\FootballplayerController::class, 'index'])->name('index');
 
-Route::get('/index', [FootballplayerController::class, 'index']);
-Route::post('add', [FootballplayerController::class, 'add']);
+//Route::get('/footballplayers/index', [FootballplayerController::class, 'index']);
+//Route::post('/footballplayers/create', [FootballplayerController::class, 'create']);
 
-Route::resource('footballplayer',FootballplayerController::class);
-Route::post('footballplayer/{footballplayer}/active', [FootballplayerController::class, 'active'])->name('footballplayer.active');
+Route::resource('footballplayers',FootballplayerController::class);
 
-Route::resource('user', \App\Http\Controllers\UserController::class);
+Route::post('footballplayers/{footballplayers}/active', [FootballplayerController::class, 'active'])->name('footballplayers.active');
+
+Route::resource('users', \App\Http\Controllers\UserController::class);
